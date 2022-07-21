@@ -1,0 +1,31 @@
+@import './resets';
+@import './variables';
+@import './nav';
+@import './form';
+@import './footer';
+
+body {
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+    width: 100vw;
+
+    background-image: url("/assets/images/tropicBackground.jpg");
+    background-size: 100% 90% ;
+}
+.content-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    height: 80%;
+
+    padding: 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .content-container {
+        justify-content: center;
+        align-items: center;
+    }
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/SCSS/styles.css">
+  <title>Parent Portal</title>
+</head>
+<body>
+  <nav class="top-nav">Family Health Portal</nav>
+    <div class="content-container">
+      <div id="app" v-cloak>
+        <section class="form-container">
+          <h1>Registration Form</h1>
+
+          <div class="errors-container">
+            <p v-if="errors.length">
+              <b>Please correct the following error(s):</b>
+              <ul>
+                <li v-for="error in errors">{{ error }}</li>
+              </ul>
+            </p>
+          </div>
+
+          <form class="registration-form" @submit.prevent="processForm">
+          <label for="fname" class="label">First Name:</label>
+          <input 
+            type="text" 
+            id="fname"  
+            v-model="fname"> 
+          <br>
+
+          <label for="lname" class="label">Last Name:</label>
+          <input 
+            type="text" 
+            name="lname" 
+            class="input"
+            v-model="lname">
+          <br>
+
+          <label for="child-name" class="label">Child's Name:</label>
+          <input 
+            type="text" 
+            name="child-name"  
+            class="input"
+            v-model="child-name">
+          <br>
+
+          <label for="email" class="label">Email:</label>
+          <input 
+            type="text" 
+            name="email"
+            class="input"  
+            v-model="email">
+            <br>
+          <button type="submit"> Register </button><br>
+
+          
+          </form>
+        </section>
+      </div>
+      
+    </div>
+  <footer>
+    <p>&#169 Designed By | Stephanie Keramis 2022</p>
+  </footer>
+<script src="https://unpkg.com/vue@next"></script>
+<script> 
+
+  let app = Vue.createApp({
+    data() {
+      return {
+        fname: '',
+        lname: '',
+        childName: '',
+        email: '',
+
+        errors: [],
+
+      }
+    },
+    mounted() {
+      if(localStorage.fname){
+        this.fname = localStorage.fname.value;
+      }
+      if(localStorage.lname){
+        this.lname = localStorage.lname;
+      }
+      if(localStorage.childName){
+        this.childName = localStorage.childName;
+      }
+      if(localStorage.email){
+        this.email = localStorage.email;
+      }
+    },
+    watch: {
+
+    },
+    methods: {
+      processForm(e){ 
+        this.errors = [];
+
+        if(!this.fname) {
+          this.errors.push("First name is required");
+          
+        } else {
+          localStorage.fname = fname;
+        }
+        if(!this.lname) {
+          this.errors.push("Last name is required");
+        } else {
+          localStorage.lname = lname;
+        }
+        if(!this.errors.childname){
+          this.errors.push("Child's name is required");
+        } else {
+          localStorage.childName = childName;
+        }
+        if(!this.email) {
+          this.errors.push("Email is required");
+        }else if(!this.validEmail(this.email)){
+          this.errors.push('Please enter a valid email')
+        } else {
+          localStorage.email = email;
+        }
+        
+        if(this.errors.length){
+          return true;
+        }
+      },
+      validEmail(email) {
+          let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(email);
+      },
+    }, 
+  })
+  
+  app.mount('#app')
+
+</script>
+
+</body>
+</html>
+
+<style lang="scss">
+
+@import "./styles.scss";
+  
+</style>
