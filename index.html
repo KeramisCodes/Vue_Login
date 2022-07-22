@@ -39,12 +39,12 @@
             v-model="lname">
           <br>
 
-          <label for="child-name" class="label">Child's Name:</label>
+          <label for="childName" class="label">Child's Name:</label>
           <input 
             type="text" 
-            name="child-name"  
+            name="childName"  
             class="input"
-            v-model="child-name">
+            v-model="childName">
           <br>
 
           <label for="email" class="label">Email:</label>
@@ -54,7 +54,7 @@
             class="input"  
             v-model="email">
             <br>
-          <button type="submit"> Register </button><br>
+          <button type="submit" @click="log-data"> Register </button><br>
 
           
           </form>
@@ -70,13 +70,13 @@
 
   let app = Vue.createApp({
     data() {
-      return {
+      return { 
         fname: '',
         lname: '',
         childName: '',
         email: '',
 
-        errors: [],
+        errors: [], // array to hold error messages
 
       }
     },
@@ -85,44 +85,42 @@
         this.fname = localStorage.fname.value;
       }
       if(localStorage.lname){
-        this.lname = localStorage.lname;
+        this.lname = localStorage.lname.value;
       }
       if(localStorage.childName){
-        this.childName = localStorage.childName;
+        this.childName = localStorage.childName.value;
       }
       if(localStorage.email){
-        this.email = localStorage.email;
+        this.email = localStorage.email.value;
       }
     },
     watch: {
 
     },
     methods: {
-      processForm(e){ 
-        this.errors = [];
+      processForm(e){  // Function to process form data on submit
+        this.errors = []; //array to push error messages to
 
-        if(!this.fname) {
+        if(!this.fname) { //Conditionals to process error messages
           this.errors.push("First name is required");
-          
-        } else {
-          localStorage.fname = fname;
-        }
+        } 
         if(!this.lname) {
           this.errors.push("Last name is required");
-        } else {
-          localStorage.lname = lname;
-        }
-        if(!this.errors.childname){
+        } 
+        if(!this.childName){
           this.errors.push("Child's name is required");
-        } else {
-          localStorage.childName = childName;
-        }
+        } 
         if(!this.email) {
           this.errors.push("Email is required");
         }else if(!this.validEmail(this.email)){
           this.errors.push('Please enter a valid email')
-        } else {
-          localStorage.email = email;
+        
+        } if(this.fname && this.lname && this.childName && this.validEmail(this.email)){
+          localStorage.fname = this.fname;
+          localStorage.lname = this.lname;
+          localStorage.childName = this.childName;
+          localStorage.childName = this.childName;
+          localStorage.email = this.email;
         }
         
         if(this.errors.length){
@@ -133,6 +131,9 @@
           let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           return re.test(email);
       },
+      logdata(){
+        console.log(name);
+      }
     }, 
   })
   
@@ -148,3 +149,22 @@
 @import "./styles.scss";
   
 </style>
+
+
+<!--- 
+This is a project I am working on as I learn Vue.js and Sass.
+As a mom I am constantly making note of my families health, scheduling appointments, and 
+filing medical records. 
+Though this application is currently just a login form, my goal is to create an app that 
+will hold all this information for the user. 
+
+Current Features:
+* Login Form
+
+Future Features:
+* Allow user to mark appointments on calendar
+* Allow user to enter notes/reminders regarding health concerns etc.
+* Allow user to input medical data to record dates and medications/vaccinations
+* Apply filter component to allow user to search records by date
+
+-->
