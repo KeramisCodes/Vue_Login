@@ -2,11 +2,11 @@
 This is a project I am working on as I learn Vue.js and Sass.
 As a mom I am constantly making note of my families health, scheduling appointments, and 
 filing medical records. 
-Though this application is currently just a login form, my goal is to create an app that 
+Though this application is currently just a registration form, my goal is to create an app that 
 will hold all this information for the user. 
 
 Current Features:
-* Login Form
+* Registration Form
 
 Future Features:
 * Allow user to mark appointments on calendar
