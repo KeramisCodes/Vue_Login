@@ -9,18 +9,39 @@
   display: none;
 }
 
-nav {
+.top-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   width: 100%;
-  height: 50px;
-  font-size: 2rem;
-  text-align: center;
   background-color: #333652;
   color: #E9EAEC;
 }
 
-.errors-container {
-  padding: 0 10px 10px 10px;
-  color: #ea1515;
+.top-nav .banner-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 16px;
+}
+
+.top-nav .signin-container {
+  display: inline-block;
+  text-align: center;
+  line-height: 50px;
+  vertical-align: middle;
+  width: 80px;
+  padding: 0.5rem;
+}
+
+.top-nav a {
+  margin: auto;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #E9EAEC;
+  cursor: pointer;
 }
 
 .form-container {
@@ -30,16 +51,45 @@ nav {
   background-color: #E9EAEC;
 }
 
-h1 {
-  padding: 0 0 2rem 0;
-  text-align: center;
+.form-container .errors-container {
+  padding: 0 10px 10px 10px;
+  color: #ea1515;
 }
 
-input {
+.form-container h1 {
+  text-align: left;
+}
+
+.registration-form input {
   display: block;
 }
 
+.registration-form button {
+  width: 80px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.registration-form button:hover {
+  background-color: #333652;
+  color: white;
+  border-style: none;
+  border-radius: 2px;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
 footer {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   height: 20vh;
   width: 100%;
   text-align: center;
@@ -48,7 +98,11 @@ footer {
   color: #E9EAEC;
 }
 
-body {
+footer p {
+  padding: 1em;
+}
+
+.main-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
