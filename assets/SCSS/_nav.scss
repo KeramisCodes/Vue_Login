@@ -1,28 +1,39 @@
 .top-nav {
   display: flex;
-  width: 100%;
+  width: 100vw;
+  min-height: 7vh;
   
   background-color: $darkBlue;
   color: $pewter;
-  .banner-content {
-    display: flex;
-    margin: 0 auto;
-    max-width: 1000px;
-    padding: 16px;
+  .banner-header {
+    @include flex-center;
+    width: 90vw;
+    height: 100;
+   
   }
   .signin-container {
-    display: inline-block;
-    text-align: center;
-    line-height: 50px;
-    vertical-align: middle;
-    width: 80px;
+    @include flex-center;
+    width: 10vw;
     padding: 0.5rem;
   }
   a { 
-    margin: auto;
     font-size: 1.2rem;
     text-decoration: none;
     color: $pewter;
     cursor: pointer;
     }
+}
+
+@media only screen and (max-width: 600px) {
+  .top-nav {
+    .banner-header {
+      width: 80vw;
+    }
+    .signin-container {
+      width: 20vw;
+      a {
+        font-size: 15px;
+      }
+    }
+  }
 }
