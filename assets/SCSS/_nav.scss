@@ -1,26 +1,30 @@
 .top-nav {
-  display: flex;
-  width: 100vw;
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
   min-height: 7vh;
   
   background-color: $darkBlue;
   color: $pewter;
   .banner-header {
     @include flex-center;
-    width: 90vw;
-    height: 100;
-   
+    width: 95%;   
   }
-  .signin-container {
+  .signin-button, .register-button {
     @include flex-center;
-    width: 10vw;
-    padding: 0.5rem;
+    width: 5%;
+    min-width: 120px;
+    background-color: $blueGray;
+    cursor: pointer;
+    &:hover {
+      background-color: $yellow;
+      a { color: $darkBlue; }
+    }
   }
   a { 
     font-size: 1.2rem;
     text-decoration: none;
     color: $pewter;
-    cursor: pointer;
     }
 }
 
@@ -32,7 +36,7 @@
     .signin-container {
       width: 20vw;
       a {
-        font-size: 15px;
+        font-size: 20px;
       }
     }
   }

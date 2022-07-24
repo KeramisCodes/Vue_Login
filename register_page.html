@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/SCSS/styles.css">
+  <title>Family Health Portal</title>
+</head>
+<body class="registration_background">
+  <div class="main-container">
+    <div class="top-nav">
+      <div class="banner-header">
+        <h1>Family Health Portal</h1>
+      </div>
+      <div class="signin-button">
+        <a href="./index.html" target="_self">Sign In</a>
+      </div>
+    </div>
+      <div class="content-container">
+        <div id="app" v-cloak>
+          <section class="registrationform-container">
+            <h1>Registration Form</h1>
+
+            <div class="errors-container">
+              <p v-if="errors.length">
+                <b>Please correct the following error(s):</b>
+                <ul>
+                  <li v-for="error in errors">{{ error }}</li>
+                </ul>
+              </p>
+            </div>
+
+            <form class="registration-form" @submit.prevent="processForm">
+              <label for="fname" class="label">First Name:</label>
+              <input 
+                type="text" 
+                id="fname"  
+                v-model="fname"> 
+              <br>
+
+              <label for="lname" class="label">Last Name:</label>
+              <input 
+                type="text" 
+                name="lname" 
+                class="input"
+                v-model="lname">
+              <br>
+
+              <label for="email" class="label">Email:</label>
+              <input 
+                type="text" 
+                name="email"
+                class="input"  
+                v-model="email">
+                <br>
+
+                <label for="password" class="label">Password:</label>
+                <input 
+                  type="password" 
+                  name="password"  
+                  class="input"
+                  v-model="password">
+                <br>
+
+              <button type="submit"> Register </button><br>
+
+            </form>
+          </section>
+        </div>
+        
+      </div>
+    <footer>
+      <p>&#169 Designed By | Stephanie Keramis 2022</p>
+    </footer>
+  </div>
+<script src="https://unpkg.com/vue@next"></script>
+<script> 
+
+  let app = Vue.createApp({
+    data() {
+      return { 
+        fname: '',
+        lname: '',
+        password: '',
+        email: '',
+
+        errors: [], 
+
+      }
+    },
+    mounted() {
+      if(localStorage.fname){
+        this.fname = localStorage.fname.value;
+      }
+      if(localStorage.lname){
+        this.lname = localStorage.lname.value;
+      }
+      if(localStorage.email){
+        this.email = localStorage.email.value;
+      }
+      if(localStorage.password){
+        this.password = localStorage.password.value;
+      }
+    },
+    watch: {
+
+    },
+    methods: {
+      processForm(e){  // Function to process form data on submit
+        this.errors = []; //array to push error messages to
+
+        if(!this.fname) { //Conditionals to process error messages
+          this.errors.push("First name is required");
+        } 
+        if(!this.lname) {
+          this.errors.push("Last name is required");
+        } 
+        if(!this.password){
+          this.errors.push("Password is required");
+        } 
+        if(!this.email) {
+          this.errors.push("Email is required");
+        }else if(!this.validEmail(this.email)){
+          this.errors.push('Please enter a valid email')
+        
+        } if(this.fname && this.lname && this.childName && this.validEmail(this.email)){
+          localStorage.fname = this.fname;
+          localStorage.lname = this.lname;
+          localStorage.childName = this.childName;
+          localStorage.childName = this.childName;
+          localStorage.email = this.email;
+
+          alert('You have successfully registered!');
+          
+        }
+        
+        if(this.errors.length){
+          return true;
+        }
+      },
+      validEmail(email) {
+          let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(email);
+      },
+    }, 
+  })
+  
+  app.mount('#app')
+
+</script>
+
+</body>
+</html>
+
+<style lang="scss">
+
+@import "./styles.scss";
+  
+</style>
+
+
+<!--- 
+This is a project I am working on as I learn Vue.js and Sass.
+As a mom I am constantly making note of my families health, scheduling appointments, and 
+filing medical records. 
+Though this application is currently just a login form, my goal is to create an app that 
+will hold all this information for the user. 
+
+Current Features:
+* Login Form
+
+Future Features:
+* Allow user to mark appointments on calendar
+* Allow user to enter notes/reminders regarding health concerns etc.
+* Allow user to input medical data to record dates and medications/vaccinations
+* Apply filter component to allow user to search records by date
+
+-->

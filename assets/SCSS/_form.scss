@@ -1,5 +1,5 @@
 
-.form-container {
+.registrationform-container, .signinform-container {
   padding: 1rem;
   border-style: solid;
   border-color: $darkBlue;
@@ -13,7 +13,7 @@
       text-align: left;
   }
 }
-.registration-form {
+.registration-form, .signin-form {
   input { 
       display: block;
   }
