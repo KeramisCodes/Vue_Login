@@ -7,8 +7,9 @@
 @import './index';
 
 .registration_background {
-  background-image: url("/assets/images/tropicBackground.jpg");
-  background-size: 100% 90% ;
+ 
+  background-image: url('../images/dark-mosaic.png');
+  background-color: $darkBlue;
 }
 .main-container {
   display: flex;

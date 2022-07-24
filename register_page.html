@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./assets/SCSS/styles.css">
   <title>Family Health Portal</title>
 </head>
+
 <body class="registration_background">
   <div class="main-container">
     <div class="top-nav">
@@ -19,7 +20,7 @@
     </div>
       <div class="content-container">
         <div id="app" v-cloak>
-          <section class="registrationform-container">
+          <section class="registration-container">
             <h1>Registration Form</h1>
 
             <div class="errors-container">
@@ -124,14 +125,14 @@
         }else if(!this.validEmail(this.email)){
           this.errors.push('Please enter a valid email')
         
-        } if(this.fname && this.lname && this.childName && this.validEmail(this.email)){
+        } if(this.fname && this.lname && this.password && this.validEmail(this.email)){
           localStorage.fname = this.fname;
           localStorage.lname = this.lname;
-          localStorage.childName = this.childName;
-          localStorage.childName = this.childName;
           localStorage.email = this.email;
+          localStorage.password = this.password;
 
-          alert('You have successfully registered!');
+          alert('You have successfully registered! Please sign in.');
+          window.location.href = "./index.html";
           
         }
         
